@@ -37,8 +37,6 @@
 >`wd.find_elements_by_tag_name('tag名')`
 * 使用CSS选择器查找（和CSS知识相似）常用
 >`wd.find_element_by_css_selector('CSS Selector参数')`
-
-        如：
 >`wd.find_element_by_css_selector('. + 类名')`
 >`wd.find_element_by_css_selector('# + ID名')`
 >`wd.find_element_by_css_selector('tag名')`
