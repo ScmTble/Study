@@ -56,6 +56,7 @@
 >`WebElement.get_attribute('class\id\href')`
 * 获取元素对应的HTML
 >`WebElement.get_attribute('outerHTML')` 获取整个元素对应的HTML文本内容
+
 >`WebElement.get_attribute('innerHTML')` 获取某个元素内部的HTML文本内容
 * 获取输入框内的内容（区别与Text）
 >`WebElement.get_attribute('value')`
