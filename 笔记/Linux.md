@@ -38,9 +38,9 @@
 
 >**python add.py < add.dat** 输入重定向
 
-
+>**ps –ef | grep 6536** 管道重定向
 ## Linux常用命令
-* 目录和文件操作
+* 目录和文件操作命令
 > **pwd** 查看当前目录
  
 > **cd** 改变当前目录（绝对路径和当前路径）
@@ -88,3 +88,21 @@
 >**nohup python t2.py &** 后台运行进程,即使关闭了终端也不退出
 
 >**Ctrl + C** 强制结束前台进程
+* 网络管理命令
+> **ip addr** 查看所有网络接口
+
+>**ifup** 启用网络接口
+
+>**ifdown** 禁用网络接口
+
+>**ping** 检查网络连通性
+
+>**ping www.baidu.com -t** 一直发包
+
+<img src="Pics/5.jpg">
+
+>**ssh  用户名@IP地址或域名** 登录远程机器ssh（secure shell）
+
+>**scp** 拷贝文件
+
+>**wget** 下载
