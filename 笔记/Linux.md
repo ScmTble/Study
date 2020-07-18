@@ -69,6 +69,8 @@
 
 >**cat** 查看文件内容
 
+-------
+
 * 进程管理命令
 
 >**ps** 显示和当前终端有关的进程信息（PID进程ID PPID父进程ID）
@@ -88,6 +90,9 @@
 >**nohup python t2.py &** 后台运行进程,即使关闭了终端也不退出
 
 >**Ctrl + C** 强制结束前台进程
+
+------
+
 * 网络管理命令
 > **ip addr** 查看所有网络接口
 
@@ -99,10 +104,53 @@
 
 >**ping www.baidu.com -t** 一直发包
 
-<img src="Pics/5.jpg">
-
 >**ssh  用户名@IP地址或域名** 登录远程机器ssh（secure shell）
 
 >**scp** 拷贝文件
 
 >**wget** 下载
+
+-----
+
+<img src="Pics/5.jpg">
+
+--------
+
+* 启动、重启、关闭、查看服务
+
+>**service mysqld status**  查看 MySQL服务状态
+
+>**service mysqld start**  启动MySQL服务
+
+>**service mysqld restart**  重启MySQL服务
+
+>**service mysqld stop**  停止MySQL服务
+------
+>**systemctl status mysqld** 查看 MySQL服务状态
+
+>**systemctl start mysqld** 启动MySQL服务
+
+>**systemctl restart mysqld** 重启MySQL服务
+
+>**systemctl stop mysqld** 停止MySQL服务
+
+-------
+* 打包与压缩（v可以可不要，仅显示详细信息）
+>**tar cvf 1.txt 2.txt** 打包
+
+>**tar xvf file.tar** 解包
+
+>**tar tvf file.tar** 查看包内容
+
+>**tar rvf file.tar 3.txt** 添加文件到包
+
+>**gzip 1.txt** 压缩文件
+
+>**gzip -d 1.gz** 解压文件
+
+>**tar zcvf 1.tar.gz 1.txt** 打包并压缩
+
+>**tar zxcf 1.tar.gz** 解包并解压缩
+------
+<img src="Pics/6.jpg">
+
