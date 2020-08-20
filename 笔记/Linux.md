@@ -80,6 +80,101 @@
 ```
 源码包不需要额外的卸载命令，直接删除安装目录即可，不会有任何的垃圾文件遗留
 ```
+-------
+
+
+
+
+
+## Linux包管理 [🔗](https://www.zhihu.com/collection/577076978)
+* 常用的包管理工具
+
+| 操作系统        | 格式 | 工具                             |
+| --------------- | ---- | -------------------------------- |
+| Debian / Ubuntu | .deb | apt , apt-cache , apt-get , dpkg |
+| CentOS          | .rpm | yum                              |
+| Arch            |      | pacman                           |
+| Fedora          | .rpm | dnf                              |
+| FreeBSD Ports   | .txz | make , pkg                       |
+
+
+* 更新包列表
+
+| 系统             | 命令                                                                 |
+| ---------------- | -------------------------------------------------------------------- |
+| Debian / Ubuntu  | ```sudo apt-get update```，```sudo apt update ```                    |
+| CentOs           | ```yum check-update```                                               |
+| Arch             | ```sudo pacman -Sy```，```sudo pacman -Su```，```sudo pacman -Syu``` |
+| Fedora           | ```dnf check-update```                                               |
+| FreeBSD Packages | ```sudo pkg update```                                                |
+| FreeBSD Ports    | ```sudo portsnap fetch update```                                     |
+
+
+
+* 从存储库安装包
+
+| 系统             | 命令                                            | 说明                               |
+| ---------------- | ----------------------------------------------- | ---------------------------------- |
+|                  | ```sudo apt-get install package```              |
+|                  | ```sudo apt-get install package1,package1...``` | 安装所有列出来的包                 |
+| Debian / Ubuntu  | ```sudo apt-get install -y package```           | 在apt提示是否继续的地方直接默认yes |
+|                  | ```sudo apt install package```                  | 显示一个彩色的进度条               |
+|                  | ```sudo yum install package```                  |
+| CentOS           | ```sudo yum install package1 package2 ...```    | 安装所有列出来的包                 |
+|                  | ```sudo yum install -y package```               | 在yum提示是否继续的地方直接默认yes |
+|                  | ```sudo dnf install package```                  |
+| Fedora           | ```sudo dnf install packagel package2 ...```    | 安装所有列出来的包                 |
+|                  | ```sudo dnf install -y package```               | 在dnf提示是否继续的地方直接默认yes |
+|                  | ```sudo pkg install package```                  |
+| FreeBSD Packages | ```sudo pkg install packagel package2...```     | 安装所有列出来的包                 |
+
+* 从本地文件系统安装一个包
+
+| 系统             | 命令                                                          | 说明                                                   |
+| ---------------- | ------------------------------------------------------------- | ------------------------------------------------------ |
+| Debian/Ubuntu    | ```sudo dpkg -i package.deb```                                |
+|                  | ```sudo apt-get install -y gdebi && sudo gdebi package.deb``` | 安装gdebi,然后使用gdebi安装package.deb并处理缺失的依赖 |
+| CentOs           | ```sudo yum install package.rpm ```                           |
+| Fedora           | ```sudo dnf install package.rpm ```                           |
+| FreeBSD Packages | ```sudo pkg add package.txz```                                |
+|                  | ```sudo pkg add -f package.txz```                             | 即使已经安装的包也会重新安装                           |
+
+* 删除一个或多个已安装的包
+
+| 系统             | 命令                                               | 说明           |
+| ---------------- | -------------------------------------------------- | -------------- |
+|                  | ```sudo apt-get remove package```                  |                |
+| Debian / Ubuntu  | ```sudo apt remove package```                      |
+|                  | ```sudo apt-get autoremove```                      | 删除不需要的包 |
+| CentOs           | ```sudo yum remove package```                      |
+| Fedora           | ```sudo dnf erase package```                       |
+| FreeBSD Packages | ```sudo pkg delete package```                      |                |
+|                  | ```sudo pkg autoremove```                          | 删除不需要的包 |
+| FreeBSD Ports    | ```sudo pkg delete package```                      |
+|                  | ```cd /usr/ports/path_to_port && make deinstall``` | 卸载port       |
+
+* apt命令
+
+| 传统命令                      | 等价的apt命令                 |
+| ----------------------------- | ----------------------------- |
+| ```apt-get update```          | ```apt update```              |
+| ```apt full-upgrade```        | ```apt-get dist-upgrade```    |
+| ```apt-cache search string``` | ```apt search string```       |
+| ```apt install package```     | ```apt-get install package``` |
+| ```apt-get remove package```  | ```apt remove package```      |
+| ```apt-get purge package```   | ```apt purge package```       |
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
