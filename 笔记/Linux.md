@@ -166,6 +166,8 @@
 
 
 * pacman 命令 详见[archlinux-wiki](https://wiki.archlinux.org/index.php/Pacman_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)#%E7%94%A8%E6%B3%95)
+
+
 | 命令 | 解释 |
 | --- | ---- |
 | 安装制定的包 | |
