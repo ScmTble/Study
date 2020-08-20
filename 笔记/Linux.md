@@ -212,7 +212,8 @@
 | ```pacman -U /path/to/package/package_name-version.pkg.tar.xz``` | 安装一个本地包(不从源里下载）                            |
 | ```pacman -U http://www.example.com/repo/example.pkg.tar.xz```   | 安装一个远程包（不在 pacman 配置的源里面）               |
 
-```pacman 的配置文件为 /etc/pacman.conf, 取消Color注释可以使用彩色输出。要查看旧版和新版的有效安装包，请取消/etc/pacman.conf中"VerbosePkgLists"的注释。
+```
+pacman 的配置文件为 /etc/pacman.conf, 取消Color注释可以使用彩色输出。要查看旧版和新版的有效安装包，请取消/etc/pacman.conf中"VerbosePkgLists"的注释。
 ```
 
 
