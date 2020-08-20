@@ -310,11 +310,11 @@ pacman 的配置文件为 /etc/pacman.conf, 取消Color注释可以使用彩色�
 | **```ps -f```**                | 详细显示每个进程信息                                 |
 | **```ps -e```**                | 显示所有正在运行的进程信息                           |
 | **```ps -ef```**               | 显示当前系统所有的进程                               |
-| **```ps –ef|grep python```**   | 查找python进程                                       |
 | **```python t2.py &```**       | 后台运行进程                                         |
 | **```nohup python t2.py &```** | 后台运行进程,即使关闭了终端也不退出                  |
 | **```Ctrl + C```**             | 强制结束前台进程                                     |
 
+> **```ps –ef|grep python```**    使用管道符配合ps查找python进程                                      
 ------
 
 * 网络管理命令
@@ -328,7 +328,7 @@ pacman 的配置文件为 /etc/pacman.conf, 取消Color注释可以使用彩色�
 | **```ping www.baidu.com -t```**   | 一直发包                        |
 | **```ssh 用户名@IP地址或域名```** | 登录远程机器ssh（secure shell） |
 | **```scp```**                     | 拷贝文件                        |
-| **```wget``**                     | 下载                            |
+| **```wget```**                     | 下载                            |
 
 -----
 
