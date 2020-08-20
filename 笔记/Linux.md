@@ -167,50 +167,50 @@
 
 * pacman 命令 详见[archlinux-wiki](https://wiki.archlinux.org/index.php/Pacman_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)#%E7%94%A8%E6%B3%95)
 
-| 命令 | 解释 |
-| --- | ---- |
-| 安装制定的包 | |
-| pacamn -S package_name | 安装或者升级单个软件包，或者一列软件包（包含依赖包）|
-| pacman -S $(pacman -Ssq package_regex) | 用正则表达式安装多个软件包 |
-| pacman -S extra/package_name | 有时候在不同的软件仓库中，一个软件包有多个版本（比如[extra]和[testing]）可以选择一个来安装 |
-| pacman -S plasma-{desktop,mediacenter,nm} | 安装多个含有相似名称的软件包，而并非整个包组或全部匹配的软件包 |    
-| pacman -Sg gnome | 想要查看哪些包属于gnome组 |
+| 命令                                      | 解释                                                                                       |
+| ----------------------------------------- | ------------------------------------------------------------------------------------------ |
+| 安装制定的包                              |                                                                                            |
+| ```pacamn -S package_name```                    | 安装或者升级单个软件包，或者一列软件包（包含依赖包）                                       |
+| ```pacman -S $(pacman -Ssq package_regex)```    | 用正则表达式安装多个软件包                                                                 |
+| ```pacman -S extra/package_name```              | 有时候在不同的软件仓库中，一个软件包有多个版本（比如[extra]和[testing]）可以选择一个来安装 |
+| ```pacman -S plasma-{desktop,mediacenter,nm}``` | 安装多个含有相似名称的软件包，而并非整个包组或全部匹配的软件包                             |
+| ```pacman -Sg gnome```                          | 想要查看哪些包属于gnome组                                                                  |
 
-| 删除软件包 |说明 |
-| --- | ---- |
-| pacman -R package_name | 删除单个软件包，保留其全部已经安装的依赖关系 |
-| pacman -Rs package_name | 删除指定软件包，及其所有没有被其他已安装软件包使用的依赖关系 |
-| pacman -Rsc package_name | 要删除软件包和所有依赖这个软件包的程序(此操作是递归的，请小心检查，可能会一次删除大量的软件包) |
-| pacman -Rdd package_name | 要删除一个被其他软件包依赖的软件包，但是不删除依赖这个软件包的其他软件包(此操作有破坏系统的能力，应该尽量避免使用) |
-| pacman -Rn package_name | pacman 删除某些程序时会备份重要配置文件，在其后面加上*.pacsave扩展名。-n 选项可以避免备份这些文件 |
+| 删除软件包               | 说明                                                                                                               |
+| ------------------------ | ------------------------------------------------------------------------------------------------------------------ |
+| ```pacman -R package_name```   | 删除单个软件包，保留其全部已经安装的依赖关系                                                                       |
+| ```pacman -Rs package_name```  | 删除指定软件包，及其所有没有被其他已安装软件包使用的依赖关系                                                       |
+| ```pacman -Rsc package_name``` | 要删除软件包和所有依赖这个软件包的程序(此操作是递归的，请小心检查，可能会一次删除大量的软件包)                     |
+| ```pacman -Rdd package_name``` | 要删除一个被其他软件包依赖的软件包，但是不删除依赖这个软件包的其他软件包(此操作有破坏系统的能力，应该尽量避免使用) |
+| ```pacman -Rn package_name```  | pacman 删除某些程序时会备份重要配置文件，在其后面加上*.pacsave扩展名。-n 选项可以避免备份这些文件                  |
 
-| 升级软件包 | 说明|
-| --- | ---- |
-| pacman -Syu | 升级整个系统,这个命令会同步非本地(local)软件仓库并升级系统的软件包 |
-| pacman -Syyu | 强制升级 |
+| 升级软件包   | 说明                                                               |
+| ------------ | ------------------------------------------------------------------ |
+| ```pacman -Syu```  | 升级整个系统,这个命令会同步非本地(local)软件仓库并升级系统的软件包 |
+| ```pacman -Syyu``` | 强制升级                                                           |
 
-| 查询包数据库 |说明 |
-| --- | ---- |
-| pacman -Q --help | 参数查询本地软件包数据库 |
-| pacman -S --help | 查询远程同步的数据库 |
-| pacman -Ss string1 string2 ... | 在包数据库中查询软件包，查询位置包含了软件包的名字和描述 |
-| pacman -Qs string1 string2 ... | 查询已安装的软件包 |
-| pacman -F string1 string2 ... | 按文件名查找软件库 |
-| pacman -Si package_name | 显示软件包的详尽的信息 |
-| pacman -Qi package_name | 查询本地安装包的详细信息 |
-| pacman -Qii package_name | 使用两个 -i 将同时显示备份文件和修改状态 |
-| pacman -Ql package_name | 获取已安装软件包所包含文件的列表 |
-| pacman -Fl package_name | 查询远程库中软件包包含的文件 |
-| pacman -Qk package_name | 检查软件包安装的文件是否都存在 |
-| pacman -Qo /path/to/file_name | 查询数据库获取某个文件属于哪个软件包 |
-| pacman -F /path/to/file_name | 查询文件属于远程数据库中的哪个软件包 |
-| pacman -Qdt | 罗列所有不再作为依赖的软件包(孤立orphans) |
-| pactree package_name | 显示软件包的依赖树 |
-| pacman -Sc | 清理软件包缓存 | 
-| pacman -Syu package_name1 package_name2 ... | 升级系统时安装其他软件包 |
-| pacman -Sw package_name | 下载包而不安装它 |
-| pacman -U /path/to/package/package_name-version.pkg.tar.xz | 安装一个本地包(不从源里下载） |
-| pacman -U http://www.example.com/repo/example.pkg.tar.xz | 安装一个远程包（不在 pacman 配置的源里面） |
+| 查询包数据库                                               | 说明                                                     |
+| ---------------------------------------------------------- | -------------------------------------------------------- |
+| ```pacman -Q --help```                                           | 参数查询本地软件包数据库                                 |
+| ```pacman -S --help```                                           | 查询远程同步的数据库                                     |
+| ```pacman -Ss string1 string2 ...```                             | 在包数据库中查询软件包，查询位置包含了软件包的名字和描述 |
+| ```pacman -Qs string1 string2 ...```                             | 查询已安装的软件包                                       |
+| ```pacman -F string1 string2 ...```                              | 按文件名查找软件库                                       |
+| ```pacman -Si package_name```                                    | 显示软件包的详尽的信息                                   |
+| ```pacman -Qi package_name```                                    | 查询本地安装包的详细信息                                 |
+| ```pacman -Qii package_name```                                   | 使用两个 -i 将同时显示备份文件和修改状态                 |
+| ```pacman -Ql package_name```                                    | 获取已安装软件包所包含文件的列表                         |
+| ```pacman -Fl package_name```                                    | 查询远程库中软件包包含的文件                             |
+| ```pacman -Qk package_name```                                    | 检查软件包安装的文件是否都存在                           |
+| ```pacman -Qo /path/to/file_name```                              | 查询数据库获取某个文件属于哪个软件包                     |
+| ```pacman -F /path/to/file_name```                               | 查询文件属于远程数据库中的哪个软件包                     |
+| ```pacman -Qdt```                                                | 罗列所有不再作为依赖的软件包(孤立orphans)                |
+| ```pactree package_name```                                       | 显示软件包的依赖树                                       |
+| ```pacman -Sc```                                                 | 清理软件包缓存                                           |
+| ```pacman -Syu package_name1 package_name2 ...```                | 升级系统时安装其他软件包                                 |
+| ```pacman -Sw package_name```                                    | 下载包而不安装它                                         |
+| ```pacman -U /path/to/package/package_name-version.pkg.tar.xz``` | 安装一个本地包(不从源里下载）                            |
+| ```pacman -U http://www.example.com/repo/example.pkg.tar.xz```   | 安装一个远程包（不在 pacman 配置的源里面）               |
 
 pacman 的配置文件为 /etc/pacman.conf, 取消Color注释可以使用彩色输出。要查看旧版和新版的有效安装包，请取消/etc/pacman.conf中"VerbosePkgLists"的注释。
 
