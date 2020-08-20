@@ -7,6 +7,8 @@
 - Linux学习
 - Python Selenium学习
 - Python Django学习
+- 学习的pdf
+- 一些Python代码
 
 # 使用
 
