@@ -48,7 +48,7 @@ kv = {
      }
 r = requests.request('GET','http://python123.io/ws',params=kv)
 print(r.url)
-http://python123.io/ws?key1=value1&key2=value2
+>>> http://python123.io/ws?key1=value1&key2=value2
 ```
 
 2. > `requests.request(method,url,**kwargs)`
@@ -59,7 +59,7 @@ http://python123.io/ws?key1=value1&key2=value2
 kv = { ' key1' : 'value1', 'key2 ' : 'value2'}
 r = requests.request('POST','http://python123.io/ws',data=kv)
 body = '主体内容'
->>>r = requests.request( 'POST'，'http://python123.io/ws ', data=body)
+r = requests.request( 'POST'，'http://python123.io/ws ', data=body)
 ```
 
 3. > `requests.request(method,url,**kwargs)`
