@@ -88,7 +88,7 @@ r = requests.request( ' POST','http://python123.io/ws',files=fs)
 r = requests.request( 'GET'， 'http:/ /www.baidu.com', timeout=10)
 ```
 
-5. > `requests.request(method,url,**kwargs)`
+6. > `requests.request(method,url,**kwargs)`
 
 ###### **kwargs:控制访问的参数，均为可选项
 ###### proxies:字典类型，设定访问代理服务器，
