@@ -542,7 +542,7 @@ bash(zsh)还支持更多的历史记录搜索方式
 
 
 
-### 所有者、组成员和其他所有用户
+### 用户
 
 ```shell
 file /etc/shadow
@@ -1246,3 +1246,201 @@ sudo mkfs -t msdos /dev/fd0
 
 #### 直接从设备转移数据
 
+dd 命令将数据快从一个地方复制到另一个地方
+
+```shell
+dd if=input_file of=output_file [bs=block_size [count=blocks]]
+```
+
+假设有两个u盘，将第一个U盘内容复制到另一个里面，两个u盘名为/dev/sdb 和 /dev/sdc
+
+```shell
+dd if=/dev/sdb	of=/dev/sdc
+```
+
+将u盘内容复制到一个普通文件里面
+
+```shell
+dd if=/dev/sdb of=flash_drive.img
+```
+
+dd (data definition) 也被称为 destory disk，因为如果将磁盘弄错会丢失磁盘数据
+
+
+
+
+
+#### 创建CD-ROM镜像
+
+1. 首先，创建一个ISO镜像文件，也就是CD-ROM文件系统镜像
+2. 其次，将此镜像文件写入到CD-ROM介质中
+
+假设我们有一个Ubuntu的镜像光盘(/dev/cdrom)，创建一个ISO文件方便以后使用
+
+```shell
+dd if=/dev/cdrom of=ubuntu.iso
+```
+
+该方法同样使用数据类DVD,但不适用于音频DVD，因为音频DVD并不使用文件系统实现存储，可以使用chrdao命令
+
+
+
+#### 从文件集合创建镜像文件
+
+- 创建ISO镜像文件
+
+将 ~/cd-rom-files 文件夹下面文件创建为一个 ISO 镜像文件
+
+```shell
+genisoimage -o cd-rom.iso -R -J ~/cd-rom-files
+```
+
+-R 选项添加了允许Rock Ridge延伸的数据，此延伸允许在Linux中使用较长文件名以及POSIX风格的文件， -J 选项运行Joliet 延伸，此延伸允许在 windows 中使用较长文件名
+
+
+
+- 挂载ISO镜像文件
+
+例如有image.iso文件，将其挂载到/mnt/iso_image目录上
+
+```shell
+mount -t iso9660 -o loop image.iso /mnt/iso_image
+```
+
+文件挂载成功后就可当成真实的CD-ROM或DVD
+
+
+
+- 擦除可读写CD-ROM
+
+可以使用wodim命令指定光盘刻录机操作对象的设备名称以及要擦除类型来完成。其中最基本的就是fast类型
+
+```shell
+wodim dev=/dev/cdrw blank=fast
+```
+
+
+
+- 写入镜像文件
+
+同样使用wodim命令写入镜像文件，通过指定写入的光介质刻录设备的名字以及镜像文件名称来完成
+
+```shell
+wodim dev=/dev/cdrw image.iso
+```
+
+
+
+- 附加认证
+
+```shell
+md5sum image.iso
+```
+
+下载iso文件后可以通过md5码来确定下载的文件是否完整，对于光盘设备可以直接校验
+
+```shell
+md5sum /dev/cdrom
+```
+
+
+
+
+
+### 网络
+
+#### 检查、检测网络
+
+- ping 像网络主机发送数据包
+
+  ping 命令会向指定的主机发送特殊网络数据包 IMCP ECHO_REQUEST，多数网络设备收到该数据包后就会回应，以此来验证网络是否正常
+
+   ```shell
+  ping 地址
+   ```
+
+  
+
+- traceroute 跟踪网络数据包的传输路径
+
+  有的系统使用tracepath程序代替，此命令会显示文件通过网络从本地系统传输到指定主机过程所有停靠点的列表
+
+  ```shell
+  traceroute baidu.com
+  ```
+
+  
+
+- netstat 检查网络设备及相关统计数据
+
+  使用 -ie 选项检查系统中的网络接口信息
+
+  ```shell
+  netstat -ie
+  ```
+
+  使用 -r 选项显示内核的网络路由表，此表表现了网络之间传输数据包时网络的配置情况
+
+  ```shell
+  netstat -r
+  ```
+
+
+
+
+#### 通过网络传输文件
+
+- ftp 采用文件传输协议传输文件
+
+  ftp(File Transfer Protocol) 程序比Web浏览器出现更早，它用来与FTP服务器进行通讯。
+
+  ```shell
+  ftp fileserver
+  ```
+
+  除了ftp, 还有 lftp 等更好的协议
+
+  
+
+- wget 非交互式网络下载工具
+
+  ```shell
+  wget http://github.com/....
+  ```
+
+  
+
+- ssh 安全登陆远程计算机
+
+  ssh(Secure Shell) 协议能够验证主机的身份从而避免中间人攻击，并且所有通讯全部加密
+
+  SSH 协议包涵两部分
+
+  1. 服务器主机上的SSH 服务端，监听端口22是否有可能的连接请求
+  2. 本地SSH客户端，与远程服务器通讯
+
+  如果无法登陆报错可能是发生了中间人攻击，不过不太可能，更可能是远程系统在某种程度上改变了。例如重新安装ssh服务器, 可从 ~/.ssh/known_hosts 文件中移除过时的密钥
+
+  
+
+- scp 和 sftp 安全传输文件
+
+  OpenSSH 软件包含了两个使用SSH加密隧道进行网络文件复制的程序.
+
+  1. scp(Secure Copy), 将远程文件复制到本地当前目录
+
+     ```shell
+     scp root@ip document.txt .
+     ```
+
+  2. sftp 与 ftp类似,只不过加密信息而不是通过明文传输
+
+     ```shell
+     sftp root@ip
+     ```
+
+     ```shell
+     sftp>	ls
+     sftp>	get test.txt
+     sftp>	bye
+     ```
