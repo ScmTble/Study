@@ -352,7 +352,7 @@ pacman 的配置文件为 /etc/pacman.conf, 取消Color注释可以使用彩色�
 | **```systemctl enable mysqld```**  | MySQL服务开机自启  |
 | **```systemctl disable mysqld```**  | 停止MySQL服务开机自启  |
 | **```systemctl is-enabled mysqld```**  | 查看服务是否开机启动  |
-| **```systemctl list-unit-files|grep enabled```**  | 查看已启动的服务列表  |
+| **```systemctl list-unit-files```**  | 查看已启动的服务列表  |
 | **```systemctl --failed```**  | 查看启动失败的服务列表  |
 
 
