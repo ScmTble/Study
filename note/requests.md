@@ -7,7 +7,7 @@
 
 ## 使用requests
 
-* 导入requests
+### 导入requests
 
 > `import requests`
 
@@ -23,7 +23,7 @@
 | `requests.patch()`   | 向HTML网页提交局部修改请求，对应于HTTP的PATCH  |
 | `requests.delete()`  | 向HTML页面提交删除请求，对应于HTTP的DELETE     |
 
-* Response对象的属性
+### Response对象的属性
 
 >`r = requests.get('https://www.baidu.com')`
 
@@ -35,65 +35,61 @@
 | `r.apparent_encoding` | 从内容中分析出的响应内容编码方式（备选编码方式） |
 | `r.content`           | HTTP响应内容的二进制形式                         |
 
-* 参数使用
+### 参数使用
+
+* **kwargs:控制访问的参数，均为可选项
 
 1. > `requests.request(method,url,**kwargs)`
 
-###### **kwargs:控制访问的参数，均为可选项
-###### params:字典或字节序列，作为参数增加到url中
-```
+#### params:字典或字节序列，作为参数增加到url中
+```python
 kv = { 
         'key1' : 'value1',
         'key2 ': 'value2'
      }
 r = requests.request('GET','http://python123.io/ws',params=kv)
 print(r.url)
->>> http://python123.io/ws?key1=value1&key2=value2
+# http://python123.io/ws?key1=value1&key2=value2
 ```
 
 2. > `requests.request(method,url,**kwargs)`
 
-###### **kwargs:控制访问的参数，均为可选项
-###### data:字典、字节序列或文件对象，作为Request的内容
-```
+#### data:字典、字节序列或文件对象，作为Request的内容
+```python
 kv = { ' key1' : 'value1', 'key2 ' : 'value2'}
 r = requests.request('POST','http://python123.io/ws',data=kv)
 body = '主体内容'
-r = requests.request( 'POST'，'http://python123.io/ws ', data=body)
+>>>r = requests.request( 'POST'，'http://python123.io/ws ', data=body)
 ```
 
 3. > `requests.request(method,url,**kwargs)`
 
-###### **kwargs:控制访问的参数，均为可选项
-###### headers:字典，HTTP定制头
-```
+#### headers:字典，HTTP定制头
+```python
 hd = { ' user-agent' : 'Chrome/10'}
 r = requests.request( 'POST'， 'http://python123.io/ws ', headers=hd)
 ```
 
 4. > `requests.request(method,url,**kwargs)`
 
-###### **kwargs:控制访问的参数，均为可选项
-###### files:字典类型，传输文件
-```
+#### files:字典类型，传输文件
+```python
 fs = { 'file' : open( 'data.xls', 'rb' )}
 r = requests.request( ' POST','http://python123.io/ws',files=fs)
 ```
 
 5. > `requests.request(method,url,**kwargs)`
 
-###### **kwargs:控制访问的参数，均为可选项
-###### timeout:设定超时时间，秒为单位
-```
+#### timeout:设定超时时间，秒为单位
+```python
 r = requests.request( 'GET'， 'http:/ /www.baidu.com', timeout=10)
 ```
 
 6. > `requests.request(method,url,**kwargs)`
 
-###### **kwargs:控制访问的参数，均为可选项
-###### proxies:字典类型，设定访问代理服务器，
-```
-pxs = i 'http' : 'http: //user:pass@10.10.10.1:1234'
+#### proxies:字典类型，设定访问代理服务器，
+```python
+pxs = { 'http' : 'http: //user:pass@10.10.10.1:1234'}
 r = requests.request( 'GET'， 'http:/ /www.baidu.com'， proxies=pxs)
 ```
 

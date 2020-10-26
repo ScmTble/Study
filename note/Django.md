@@ -13,7 +13,7 @@
 -----
 ## url路由设置
 * path()设置
->```
+>```python
 >from django.urls import include, path
 >urlpatterns = [
 >    path('index/', views.index, name='main-view'),
@@ -30,7 +30,7 @@
 
 例如：
 
-```
+```python
 from django.urls import path
 from . import views
 
@@ -46,7 +46,7 @@ def page(request, num):
 
 * re_path(正则表达式匹配)
 
-```
+```python
 
 from django.urls import include, re_path
 
