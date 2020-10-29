@@ -246,6 +246,80 @@ pacman 的配置文件为 /etc/pacman.conf, 取消Color注释可以使用彩色�
 
 
 
+### 环境变量查看
+
+
+
+```shell
+1. 显示环境变量HOME
+$ echo $HOME
+/home/redbooks
+```
+
+```shell
+2. 设置一个新的环境变量hello
+$ export HELLO="Hello!"
+$ echo $HELLO
+Hello!
+```
+
+```shell
+3. 使用env命令显示所有的环境变量
+$ env
+HOSTNAME=redbooks.safe.org
+PVM_RSH=/usr/bin/rsh
+Shell=/bin/bash
+TERM=xterm
+HISTSIZE=1000
+......
+```
+
+**常见环境变量**
+
+| 环境变量 | 说明                                         |
+| -------- | -------------------------------------------- |
+| PATH     | 决定了shell将到哪些目录中寻找命令或程序      |
+| HOME     | 当前用户主目录                               |
+| HISTSIZE | 历史记录数                                   |
+| LOGNAME  | 当前用户的登录名                             |
+| HOSTNAME | 指主机的名称                                 |
+| SHELL    | 当前用户Shell类型                            |
+| LANGUGE  | 语言相关的环境变量，多语言可以修改此环境变量 |
+| MAIL     | 当前用户的邮件存放目录                       |
+| PS1      | 基本提示符，对于root用户是#，对于普通用户是$ |
+
+### 设置环境变量
+
+```shell
+1.在/etc/profile文件中添加变量【对所有用户生效(永久的)】
+
+用Vim在文件/etc/profile文件中增加变量，该变量将会对Linux下所有用户有效，并且是“永久的”。
+例如：编辑/etc/profile文件，添加CLASSPATH变量
+# vi /etc/profile
+export CLASSPATH=./JAVA_HOME/lib;$JAVA_HOME/jre/lib
+注：修改文件后要想马上生效还要运行# source /etc/profile不然只能在下次重进此用户时生效。
+```
+
+```shell
+2.在用户目录下的.bash_profile文件中增加变量【对单一用户生效(永久的)】
+
+用VI在用户目录下的.bash_profile文件中增加变量，改变量仅会对当前用户有效，并且是“永久的”。
+例如：编辑guok用户目录(/home/guok)下的.bash_profile
+$ vim /home/guok/.bash.profile
+添加如下内容：
+export CLASSPATH=./JAVA_HOME/lib;$JAVA_HOME/jre/lib
+注：修改文件后要想马上生效还要运行$ source /home/guok/.bash_profile不然只能在下次重进此用户时生效。
+```
+
+```shell
+3.直接运行export命令定义变量【只对当前shell(BASH)有效(临时的)】
+
+export PATH=./JAVA_HOME/lib;$JAVA_HOME/jre/lib(或)
+export PATH=$PATH:./JAVA_HOME/lib;$JAVA_HOME/jre/lib
+```
+
+
+
 ### 常见的硬件设备
 
 | 硬件设备       | 文件名称            |
@@ -278,7 +352,7 @@ pacman 的配置文件为 /etc/pacman.conf, 取消Color注释可以使用彩色�
 | **```umount /dev/sdb2```**    | 撤销挂载 |
 | **```mkfs.ext4 /dev/sdb1```** | 格式化   |
 
-### fdisk 命令中
+### fdisk 命令
 
 | 参数 | 作用                   |
 | ---- | ---------------------- |
